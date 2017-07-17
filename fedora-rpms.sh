@@ -1,3 +1,9 @@
+#!/bin/bash
+
+# Add your master node IP here
+MASTER_IP=
+
+
 dnf install -y vim git etcd flannel docker wget
 
 
@@ -49,7 +55,6 @@ mkdir -p ${cert_dir}
 cd ${cert_dir}
 
 KUBE_SERVICE_IP=$(echo $PORTAL_NETWORK_CIDR | awk 'BEGIN{FS="[./]"; OFS="."}{print $1,$2,$3,$4 + 1}')
-MASTER_IP=137.138.7.21
 
 # reference: https://coreos.com/kubernetes/docs/latest/openssl.html
 cat << EOF > openssl.cnf
